@@ -4,8 +4,8 @@ One-page site for Pelagos Ventures LLC (Wyoming). Static HTML, no JS, no build s
 
 ## Status
 
-- Local only, not pushed (decided 2026-11-11: push and Pages after review).
-- Planned repo: `propria-gmbh/pelagos-ventures` (public), URL `https://propria-gmbh.github.io/pelagos-ventures/`.
+- Published 2026-11-11: repo `propria-gmbh/pelagos-ventures` (public), Pages from `main` / root, live at the URL below (HTTP 200).
+- URL: `https://propria-gmbh.github.io/pelagos-ventures/`
 
 ## Content rules
 
@@ -14,8 +14,3 @@ One-page site for Pelagos Ventures LLC (Wyoming). Static HTML, no JS, no build s
 - Contact email `info@pelagos-ventures.com` was given by the owner. Whether the domain and mailbox exist was not verified.
 - Used for KYC (Payoneer, Slash), so the text must stay in line with the real business.
 
-## Deploy
-
-1. `gh repo create propria-gmbh/pelagos-ventures --public --source . --push`
-2. Settings, Pages: branch `main`, folder `/ (root)`.
-3. Check the URL, then use it in the "Website" step of the Payoneer form.
