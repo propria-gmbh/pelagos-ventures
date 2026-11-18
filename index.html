@@ -10,53 +10,95 @@
 <meta name="color-scheme" content="light dark">
 <style>
   :root {
-    --bg: #ffffff;
-    --fg: #1d2733;
-    --muted: #5b6776;
-    --line: #dfe4ea;
-    --accent: #1f4e79;
-    --band: #f4f7fa;
+    --paper: #f6f3ec;
+    --ink: #14232e;
+    --muted: #5d6a72;
+    --rule: #d9d3c4;
+    --sea: #0f3d4c;
+    --accent: #b5532b;
+    --serif: Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #12171d;
-      --fg: #e6ebf0;
-      --muted: #9aa6b3;
-      --line: #2a333d;
-      --accent: #7fb2e0;
-      --band: #1a2129;
+      --paper: #0e1a21;
+      --ink: #e8e4d8;
+      --muted: #93a1a8;
+      --rule: #25363f;
+      --sea: #8fc3cf;
+      --accent: #e08a5f;
     }
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font: 18px/1.65 var(--serif);
   }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
-  header { border-bottom: 1px solid var(--line); padding: 20px 0; }
-  .brand { font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 15px; }
-  .brand span { color: var(--muted); font-weight: 400; letter-spacing: 0; text-transform: none; margin-left: 8px; }
-  .hero { padding: 64px 0 48px; }
-  h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.2; margin: 0 0 16px; }
-  .lead { font-size: 19px; color: var(--muted); max-width: 640px; margin: 0; }
-  section { padding: 40px 0; border-top: 1px solid var(--line); }
-  h2 { font-size: 20px; margin: 0 0 16px; }
-  p { margin: 0 0 12px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 8px; }
-  .card { background: var(--band); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
-  .card strong { display: block; margin-bottom: 4px; }
-  .card span { color: var(--muted); font-size: 15px; }
-  dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; }
-  dt { color: var(--muted); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--sea); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--accent); }
+
+  header { padding: 28px 0 0; }
+  .brand {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    font-family: var(--sans); font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+    padding-bottom: 14px; border-bottom: 1px solid var(--ink);
+  }
+  .brand b { font-weight: 700; }
+  .brand span { color: var(--muted); }
+
+  .hero { position: relative; padding: 88px 0 150px; overflow: hidden; }
+  .hero h1 {
+    position: relative; z-index: 1;
+    font-weight: 400; font-size: clamp(34px, 6.4vw, 64px); line-height: 1.08;
+    letter-spacing: -.015em; margin: 0 0 28px; max-width: 14em;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .lead { position: relative; z-index: 1; font-size: 20px; color: var(--muted); max-width: 31em; margin: 0; }
+  .waves {
+    position: absolute; right: 0; bottom: 12px; width: min(560px, 100%); height: auto;
+    color: var(--sea); opacity: .22; pointer-events: none;
+  }
+
+  .row {
+    display: grid; grid-template-columns: 180px 1fr; gap: 8px 40px;
+    padding: 36px 0; border-top: 1px solid var(--rule);
+  }
+  .row h2 {
+    margin: 4px 0 0; font-family: var(--sans); font-size: 12px; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+  }
+  .row p { margin: 0 0 14px; max-width: 36em; }
+  .row p:last-child { margin-bottom: 0; }
+
+  ul.markets { list-style: none; margin: 0; padding: 0; }
+  .markets li {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 12px 0; border-bottom: 1px solid var(--rule);
+  }
+  .markets li:first-child { padding-top: 0; }
+  .markets li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .markets .name { font-size: 22px; }
+  .markets .state { font-family: var(--sans); font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+  .markets li.primary .state { color: var(--accent); font-weight: 600; }
+
+  dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 10px 32px; }
+  dt { font-family: var(--sans); font-size: 14px; color: var(--muted); padding-top: 3px; }
   dd { margin: 0; }
-  a { color: var(--accent); }
-  footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
-  @media (max-width: 520px) {
-    dl { grid-template-columns: 1fr; gap: 2px; }
-    dd { margin-bottom: 10px; }
+
+  footer { border-top: 1px solid var(--ink); margin-top: 24px; padding: 20px 0 44px; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 680px) {
+    body { font-size: 17px; }
+    .hero { padding: 56px 0 120px; }
+    .row { grid-template-columns: 1fr; padding: 28px 0; }
+    .row h2 { margin-bottom: 8px; }
+    dl { grid-template-columns: 1fr; gap: 0; }
+    dt { padding-top: 10px; }
+    .waves { opacity: .14; }
   }
 </style>
 </head>
@@ -64,7 +106,7 @@
 
 <header>
   <div class="wrap">
-    <div class="brand">Pelagos Ventures LLC <span>Wyoming, USA</span></div>
+    <div class="brand"><b>Pelagos Ventures LLC</b><span>Wyoming, USA</span></div>
   </div>
 </header>
 
@@ -72,27 +114,34 @@
   <div class="wrap">
 
     <div class="hero">
-      <h1>Online retail, built for large markets outside the European Union.</h1>
+      <svg class="waves" viewBox="0 0 560 120" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M0 30 C 70 0, 140 60, 210 30 S 350 0, 420 30 S 520 60, 560 30"/>
+        <path d="M0 60 C 70 30, 140 90, 210 60 S 350 30, 420 60 S 520 90, 560 60"/>
+        <path d="M0 90 C 70 60, 140 120, 210 90 S 350 60, 420 90 S 520 120, 560 90"/>
+      </svg>
+      <h1>Online retail, built for large markets <em>outside</em> the European Union.</h1>
       <p class="lead">Pelagos Ventures LLC is launching online retail stores in the United States, Canada, Australia and the United Kingdom.</p>
     </div>
 
-    <section>
+    <section class="row">
       <h2>What we do</h2>
-      <p>We run direct-to-consumer online stores. Our suppliers provide finished products, and we take care of the sales side: the storefront, customer orders and payment acceptance.</p>
-      <p>The company is in its launch phase. Our first stores are being prepared.</p>
-    </section>
-
-    <section>
-      <h2>Markets</h2>
-      <div class="grid">
-        <div class="card"><strong>United States</strong><span>Primary market</span></div>
-        <div class="card"><strong>Canada</strong><span>Planned</span></div>
-        <div class="card"><strong>Australia</strong><span>Planned</span></div>
-        <div class="card"><strong>United Kingdom</strong><span>Planned</span></div>
+      <div>
+        <p>We run direct-to-consumer online stores. Our suppliers provide finished products, and we take care of the sales side: the storefront, customer orders and payment acceptance.</p>
+        <p>The company is in its launch phase. Our first stores are being prepared.</p>
       </div>
     </section>
 
-    <section>
+    <section class="row">
+      <h2>Markets</h2>
+      <ul class="markets">
+        <li class="primary"><span class="name">United States</span><span class="state">Primary market</span></li>
+        <li><span class="name">Canada</span><span class="state">Planned</span></li>
+        <li><span class="name">Australia</span><span class="state">Planned</span></li>
+        <li><span class="name">United Kingdom</span><span class="state">Planned</span></li>
+      </ul>
+    </section>
+
+    <section class="row">
       <h2>Company</h2>
       <dl>
         <dt>Legal name</dt>
